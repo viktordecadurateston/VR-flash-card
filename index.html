@@ -6,8 +6,9 @@
     <title>Flashcards Animados</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; }
         .flashcard { 
-            width: 300px; height: 200px; margin: 20px auto; 
+            width: 300px; height: 200px; margin: 10px; 
             border: 1px solid #ccc; border-radius: 8px; 
             display: flex; justify-content: center; align-items: center; 
             background-color: #fff; position: relative; cursor: pointer;
@@ -24,16 +25,72 @@
     </style>
 </head>
 <body>
-    <div class="flashcard" onclick="flipCard()">
-        <div class="card-content">
-            <div class="front">Frente do Cartão</div>
-            <div class="back">Verso do Cartão</div>
+    <div class="container">
+        <!-- Cartões -->
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é a capital da França?</div>
+                <div class="back">Paris</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é o maior planeta do sistema solar?</div>
+                <div class="back">Júpiter</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é o símbolo químico da água?</div>
+                <div class="back">H₂O</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Quem escreveu 'Dom Casmurro'?</div>
+                <div class="back">Machado de Assis</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é a fórmula da velocidade?</div>
+                <div class="back">v = d / t</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é o elemento químico representado pelo símbolo 'Fe'?</div>
+                <div class="back">Ferro</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é a moeda oficial dos EUA?</div>
+                <div class="back">Dólar</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é o maior oceano do mundo?</div>
+                <div class="back">Oceano Pacífico</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Quem pintou 'Mona Lisa'?</div>
+                <div class="back">Leonardo da Vinci</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é a principal fonte de energia solar?</div>
+                <div class="back">O Sol</div>
+            </div>
         </div>
     </div>
 
     <script>
-        function flipCard() {
-            const card = document.querySelector('.flashcard');
+        function flipCard(card) {
             card.classList.toggle('flipped');
         }
     </script>
