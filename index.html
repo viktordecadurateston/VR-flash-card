@@ -5,35 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcards Animados</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; margin: 20px; }
-        .flashcard { 
-            width: 300px; height: 200px; margin: 10px; 
-            perspective: 1000px; 
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
         }
-        .card-content { 
-            width: 100%; height: 100%; 
-            position: relative; 
-            transform-style: preserve-3d; 
-            transition: transform 0.6s; 
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
         }
-        .flashcard.flipped .card-content { transform: rotateY(180deg); }
-        .front, .back { 
-            width: 100%; height: 100%; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            position: absolute; 
-            backface-visibility: hidden; 
-            background-color: #fff; 
-            border: 1px solid #ccc; 
-            border-radius: 8px; /* Bordas arredondadas */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        .flashcard {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            perspective: 1000px;
         }
-        .back { 
-            transform: rotateY(180deg); 
+        .card-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
         }
-        form { margin: 20px; }
+        .flashcard.flipped .card-content {
+            transform: rotateY(180deg);
+        }
+        .front, .back {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            backface-visibility: hidden;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .back {
+            transform: rotateY(180deg);
+        }
+        form {
+            margin: 20px;
+        }
         input[type="text"], input[type="submit"] {
             padding: 10px;
             margin: 5px 0;
@@ -60,10 +77,73 @@
         <input type="submit" value="Adicionar Flashcard">
     </form>
     <div class="container" id="flashcardContainer">
-        <!-- Flashcards serão adicionados aqui -->
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">O que é fotossíntese?</div>
+                <div class="back">Processo de conversão de luz em energia por plantas.</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é a principal função dos ribossomos?</div>
+                <div class="back">Síntese de proteínas.</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">O que é a teoria da relatividade?</div>
+                <div class="back">Conceito de que espaço e tempo são interdependentes.</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é a capital da Austrália?</div>
+                <div class="back">Canberra.</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">O que são ácidos nucleicos?</div>
+                <div class="back">Moleculas que armazenam informações genéticas.</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Qual é a principal função do sistema circulatório?</div>
+                <div class="back">Transporte de oxigênio e nutrientes pelo corpo.</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">Quem formulou a lei da gravitação universal?</div>
+                <div class="back">Isaac Newton.</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">O que é biodiversidade?</div>
+                <div class="back">Variedade de vida em um ecossistema.</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">O que define um mineral?</div>
+                <div class="back">Substância sólida, inorgânica e com composição química definida.</div>
+            </div>
+        </div>
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="card-content">
+                <div class="front">O que é a mitose?</div>
+                <div class="back">Processo de divisão celular que resulta em duas células-filhas.</div>
+            </div>
+        </div>
     </div>
 
     <script>
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
         document.getElementById('questionForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const questionText = document.getElementById('questionInput').value;
@@ -89,5 +169,6 @@
     </script>
 </body>
 </html>
+
 
 
