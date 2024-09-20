@@ -1,25 +1,44 @@
-body { font-family: Arial, sans-serif; text-align: center; }
-.container { display: flex; flex-wrap: wrap; justify-content: center; }
-.flashcard { 
-    width: 300px; height: 200px; margin: 10px; 
-    border: 1px solid #ccc; border-radius: 8px; 
-    perspective: 1000px; /* Adiciona perspectiva para a rotação */
+body {
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    text-align: center; /* Centraliza o texto */
+    background-color: #f9f9f9; /* Cor de fundo clara */
 }
-.card-content { 
-    width: 100%; height: 100%; 
-    position: relative; 
-    transform-style: preserve-3d; /* Preserva o estilo 3D para rotação */
-    transition: transform 0.6s; /* Transição suave para a rotação */
+
+.container {
+    display: flex; /* Usado para criar um layout flexível */
+    flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    margin: 20px; /* Margem ao redor da container */
 }
-.flashcard.flipped .card-content { transform: rotateY(180deg); } /* Roda o cartão quando clicado */
-.front, .back { 
-    width: 100%; height: 100%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    position: absolute; 
-    backface-visibility: hidden; /* Oculta o verso quando não está visível */
+
+.flashcard {
+    width: 300px; /* Largura do cartão */
+    height: 200px; /* Altura do cartão */
+    margin: 10px; /* Margem entre os cartões */
+    perspective: 1000px; /* Profundidade da perspectiva */
 }
-.back { 
-    transform: rotateY(180deg); /* Roda o verso para ficar visível ao girar */
+
+.card-content {
+    width: 100%; /* Largura total do conteúdo do cartão */
+    height: 100%; /* Altura total do conteúdo do cartão */
+    position: relative; /* Posição relativa para o efeito de rotação */
+    transform-style: preserve-3d; /* Preserva o estilo 3D */
+    transition: transform 0.6s; /* Animação suave para a rotação */
 }
+
+.flashcard.flipped .card-content {
+    transform: rotateY(180deg); /* Rotação do cartão quando clicado */
+}
+
+.front, .back {
+    width: 100%; /* Largura total dos lados do cartão */
+    height: 100%; /* Altura total dos lados do cartão */
+    display: flex; /* Flexbox para centralização */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    position: absolute; /* Posição absoluta para sobreposição */
+    backface-visibility: hidden; /* Oculta o verso quando não visível */
+    background-color: #fff; /* Cor de fundo branca */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave *

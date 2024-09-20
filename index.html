@@ -5,104 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcards Animados</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; }
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; margin: 20px; }
         .flashcard { 
             width: 300px; height: 200px; margin: 10px; 
-            perspective: 1000px; /* Adiciona perspectiva para a rotação */
+            perspective: 1000px; 
         }
         .card-content { 
             width: 100%; height: 100%; 
             position: relative; 
-            transform-style: preserve-3d; /* Preserva o estilo 3D para rotação */
-            transition: transform 0.6s; /* Transição suave para a rotação */
+            transform-style: preserve-3d; 
+            transition: transform 0.6s; 
         }
-        .flashcard.flipped .card-content { transform: rotateY(180deg); } /* Roda o cartão quando clicado */
+        .flashcard.flipped .card-content { transform: rotateY(180deg); }
         .front, .back { 
             width: 100%; height: 100%; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             position: absolute; 
-            backface-visibility: hidden; /* Oculta o verso quando não está visível */
-            background-color: #fff; /* Adiciona cor de fundo para visibilidade */
-            border: 1px solid #ccc; /* Adiciona borda para visibilidade */
+            backface-visibility: hidden; 
+            background-color: #fff; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; /* Bordas arredondadas */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
         }
         .back { 
-            transform: rotateY(180deg); /* Roda o verso para ficar visível ao girar */
+            transform: rotateY(180deg); 
+        }
+        form { margin: 20px; }
+        input[type="text"], input[type="submit"] {
+            padding: 10px;
+            margin: 5px 0;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Cartões -->
-        <div class="flashcard" onclick="flipCard(this)">
-            <div class="card-content">
-                <div class="front">Qual é a capital da França?</div>
-                <div class="back">Paris</div>
-            </div>
-        </div>
-        <div class="flashcard" onclick="flipCard(this)">
-            <div class="card-content">
-                <div class="front">Qual é o maior planeta do sistema solar?</div>
-                <div class="back">Júpiter</div>
-            </div>
-        </div>
-        <div class="flashcard" onclick="flipCard(this)">
-            <div class="card-content">
-                <div class="front">Qual é o símbolo químico da água?</div>
-                <div class="back">H₂O</div>
-            </div>
-        </div>
-        <div class="flashcard" onclick="flipCard(this)">
-            <div class="card-content">
-                <div class="front">Quem escreveu 'Dom Casmurro'?</div>
-                <div class="back">Machado de Assis</div>
-            </div>
-        </div>
-        <div class="flashcard" onclick="flipCard(this)">
-            <div class="card-content">
-                <div class="front">Qual é a fórmula da velocidade?</div>
-                <div class="back">v = d / t</div>
-            </div>
-        </div>
-        <div class="flashcard" onclick="flipCard(this)">
-            <div class="card-content">
-                <div class="front">Qual é o elemento químico representado pelo símbolo 'Fe'?</div>
-                <div class="back">Ferro</div>
-            </div>
-        </div>
-        <div class="flashcard" onclick="flipCard(this)">
-            <div class="card-content">
-                <div class="front">Qual é a moeda oficial dos EUA?</div>
-                <div class="back">Dólar</div>
-            </div>
-        </div>
-        <div class="flashcard" onclick="flipCard(this)">
-            <div class="card-content">
-                <div class="front">Qual é o maior oceano do mundo?</div>
-                <div class="back">Oceano Pacífico</div>
-            </div>
-        </div>
-        <div class="flashcard" onclick="flipCard(this)">
-            <div class="card-content">
-                <div class="front">Quem pintou 'Mona Lisa'?</div>
-                <div class="back">Leonardo da Vinci</div>
-            </div>
-        </div>
-        <div class="flashcard" onclick="flipCard(this)">
-            <div class="card-content">
-                <div class="front">Qual é a principal fonte de energia solar?</div>
-                <div class="back">O Sol</div>
-            </div>
-        </div>
+    <h1>Flashcards Animados</h1>
+    <form id="questionForm">
+        <input type="text" id="questionInput" placeholder="Digite sua pergunta" required>
+        <input type="text" id="answerInput" placeholder="Digite a resposta" required>
+        <input type="submit" value="Adicionar Flashcard">
+    </form>
+    <div class="container" id="flashcardContainer">
+        <!-- Flashcards serão adicionados aqui -->
     </div>
 
     <script>
-        function flipCard(card) {
-            card.classList.toggle('flipped');
-        }
+        document.getElementById('questionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const questionText = document.getElementById('questionInput').value;
+            const answerText = document.getElementById('answerInput').value;
+
+            const flashcard = document.createElement('div');
+            flashcard.className = 'flashcard';
+            flashcard.onclick = function() { this.classList.toggle('flipped'); };
+
+            const cardContent = `
+                <div class="card-content">
+                    <div class="front">${questionText}</div>
+                    <div class="back">${answerText}</div>
+                </div>
+            `;
+            flashcard.innerHTML = cardContent;
+            document.getElementById('flashcardContainer').appendChild(flashcard);
+
+            // Limpar os campos de entrada
+            document.getElementById('questionInput').value = '';
+            document.getElementById('answerInput').value = '';
+        });
     </script>
 </body>
 </html>
+
 
